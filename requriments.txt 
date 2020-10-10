@@ -2,3 +2,4 @@ install opencv-python
 install gym[all] 
 show pyglet
 install pillow
+install tensorflow
