@@ -3,3 +3,4 @@ install gym[all]
 show pyglet
 install pillow
 install tensorflow
+install keras 
