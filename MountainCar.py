@@ -5,7 +5,7 @@ env = gym.make("MountainCar-v0")
 
 learning_rate = 0.1
 discount = 0.95
-episodes = 2500
+episodes = 20000
 
 show_every = 2000
 
@@ -22,6 +22,11 @@ show_every = 2000
 DISCRETE_OS_SIZE = [20] * len(env.observation_space.high)
 
 discrete_os_win_size = (env.observation_space.high - env.observation_space.low)/DISCRETE_OS_SIZE
+
+epsilon = 0.5
+start_epsilon_decaying = 1
+end_epsilon_decaying = episodes // 2
+eplison_decay_value = epsilon/(end_epsilon_decaying - start_epsilon_decaying) 
 # print(discrete_os_win_size) 
 
 # build Q table 
@@ -57,7 +62,10 @@ for episode in range(episodes):
     discrete_state = get_discrete_state(env.reset())
     done= False
     while not done:
-        action = np.argmax(q_table[discrete_state]) 
+        if np.random.random()> epsilon:
+            action = np.argmax(q_table[discrete_state]) 
+        else:
+            action =np.random.randint(0,env.action_space.n)    
         new_state, reward, done, _ = env.step(action)
         new_discrete_state = get_discrete_state(new_state)
 
@@ -73,11 +81,9 @@ for episode in range(episodes):
             q_table[discrete_state + (action, )] = 0 
 
 
-        discrete_state = new_discrete_state     
+        discrete_state = new_discrete_state  
+    if end_epsilon_decaying >= episode >= start_epsilon_decaying:
+        epsilon -= eplison_decay_value       
 env.close() 
 #print(reward)
-
-
-
-
 
