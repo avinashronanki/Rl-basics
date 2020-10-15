@@ -50,7 +50,7 @@ print(Q / np.max(Q)*100)
 #-------- TESTING -----------
 #goal state = 5
 #best sequence path starting from 2-> 2, 3 ,1 ,5  to gain max rewards
-current_state = 1
+current_state = 3
 steps = [current_state]
 while current_state!=5:
     next_step_index = np.where(Q[current_state,] == np.max(Q[current_state,]))[1]
