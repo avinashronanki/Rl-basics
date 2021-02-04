@@ -1,7 +1,7 @@
 import gym 
 import numpy as np
 env = gym.make("MountainCar-v0")
-
+from OpenGL.GL import *
 
 learning_rate = 0.1
 discount = 0.95

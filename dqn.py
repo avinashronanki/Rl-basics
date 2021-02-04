@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import keras.backend as backend
+from tensorflow.keras.models import Sequential
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Conv2D, MaxPooling2D, Activation, Flatten
 from keras.optimizers import Adam

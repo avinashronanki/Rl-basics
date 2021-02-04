@@ -1,6 +1,7 @@
-install opencv-python
-install gym[all] 
-show pyglet
-install pillow
-install tensorflow==2.2.0
-install Keras==2.2.0
+opencv-python
+gym[all]
+pyglet
+pillow
+tensorflow==2.2.0
+Keras==2.2.0
+pyopengl
